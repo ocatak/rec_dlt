@@ -1,0 +1,44 @@
+{
+  "name": "rec-afj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "refresh": "rm -rf ./node_modules ./yarn.lock && yarn",
+    "client": "ts-node client.ts",
+    "org": "ts-node organization.ts"
+  },
+  "dependencies": {
+    "@hyperledger/anoncreds-nodejs": "^0.1.0",
+    "@hyperledger/aries-askar-nodejs": "^0.1.0",
+    "@hyperledger/indy-vdr-nodejs": "^0.1.0",
+    "axios": "^1.7.4",
+    "dotenv": "^16.3.1",
+    "inquirer": "^8.2.5",
+    "ioredis": "^5.4.1",
+    "redis": "^4.6.10"
+  },
+  "devDependencies": {
+    "@aries-framework/anoncreds": "0.4.2",
+    "@aries-framework/anoncreds-rs": "0.4.2",
+    "@aries-framework/askar": "0.4.2",
+    "@aries-framework/core": "0.4.2",
+    "@aries-framework/indy-sdk": "0.4.2",
+    "@aries-framework/indy-vdr": "0.4.2",
+    "@aries-framework/node": "0.4.2",
+    "@types/figlet": "^1.5.4",
+    "@types/indy-sdk": "^1.16.26",
+    "@types/inquirer": "^8.2.6",
+    "ts-node": "^10.4.0",
+    "typescript": "^5.0.4"
+  },
+  "resolutions": {
+    "ref-napi": "npm:@2060.io/ref-napi"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
