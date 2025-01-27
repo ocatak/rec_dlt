@@ -9,7 +9,7 @@ export type ClientJwtPayload = {
 }
 export type JwtPayload = ClientJwtPayload
 
-export function generateJwtToken(payload: any, expiresIn: string | number = '1h'): string {
+export function generateJwtToken(payload: any, expiresIn: any = '1h'): string {
     const options: SignOptions = {
         expiresIn,
     };

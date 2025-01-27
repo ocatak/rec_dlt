@@ -4,36 +4,20 @@ This guide covers the installation and setup process for the REC System, includi
 
 ## Prerequisites
 
-- Node.js version >= 18.18
-- Redis server
+- Node.js version = 20.10
 - Docker
 - Add docker to sudo group to use docker without using sudo
+- Redis server
+    - using docker
+    ```bash
+        docker run --name redis-server -p 6379:6379 -d redis
+    ```
+
 - Install JQ by running command `sudo apt install -y jq`
 
 ## Installation Steps
 
-### 1. Organization and Client Api Setup
-1. Navigate to the agent directory and install dependencies. This SDK includes both REC Agent and Client Agent functionalities.
-```
-cd agent
-yarn
-```
-2. Add the following variables to your `.env` file:
-
-```
-FABRIC_API='http://localhost:3005'
-```
-3. Start an organization api:
-```
-yarn org <email> <port>
-```
-4. Start a client api:
-```
-yarn client <email> <port>
-```
-Replace `<email>` with the actual email of the organization or client, and `<port>` with the port number on which you want the API to run. Example: `yarn org org1@rec.com 5000` or `yarn client client1@rec.com 5001`
-
-### 2. Fabric Network Setup
+### 1. Fabric Network Setup
 
 The following steps will set up and configure the Fabric network:
 
@@ -54,7 +38,7 @@ cd service/rec
 ```bash
 ./startNetwork.sh
 ```
-4. A Redis server must be running either on Docker or localhost using the default port. To run Redis using Docker:
+4. A Redis server must be running either on Docker or localhost using the default port. To start a Redis server using Docker:
 ```bash
 docker run --name redis-server -p 6379:6379 -d redis
 ```
@@ -65,6 +49,29 @@ cd service/rec/server
 npm run dev
 ```
 Fabric server will run at PORT 3005
+
+### 2. Organization and Client Api Setup
+1. Navigate to the agent directory and install dependencies. This SDK includes both REC Agent and Client Agent functionalities.
+```
+cd agent
+npm install
+```
+2. Add the following variables to your `.env` file:
+
+```
+FABRIC_API='http://localhost:3005'
+```
+3. Start an organization api:
+```
+npm run org <email> <port>
+```
+4. Start a client api:
+```
+npm run client <email> <port>
+```
+Replace `<email>` with the actual email of the organization or client, and `<port>` with the port number on which you want the API to run. Example: `npm run org org1@rec.com 5000` or `npm run client client1@rec.com 5001`
+
+
 
 ### 4. Organization Interface Setup
 Configure and start the Organization Interface as follows:

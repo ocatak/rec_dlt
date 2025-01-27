@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
       value: authToken.split(' ')[1],
       path: '/',
       httpOnly: true,
+      sameSite: 'strict'
     });
 
     return NextResponse.json({ success: true, clientData: response.data.clientData });
