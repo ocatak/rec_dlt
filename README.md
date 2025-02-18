@@ -1,9 +1,29 @@
+
+
 # rec_dlt
+## Table of Contents
+- [Usage instructions](#usage-instructions)
+- [Prerequisites](#prerequisites)
+- [Installation Steps](#installation-steps)
+  - [1. Fabric Network Setup](#1-fabric-network-setup)
+  - [2. Organization and Client Api Setup](#2-organization-and-client-api-setup)
+  - [3. Organization Interface Setup](#3-organization-interface-setup)
+  - [4. Client Interface Setup](#4-client-interface-setup)
+  - [5. CSV data generation](#5-csv-data-generation)
+  - [6. Realtime api to send data](#6-realtime-api-to-send-data)
+- [Troubleshooting on starting fabric network](#troubleshooting-on-starting-fabric-network)
+- [Architecture](#architecture)
+- [Components](#components)
+- [API Documentation](#api-documentation)
+- [Scenario](#scenario)
+ 
+
 ## Usage instructions
 This guide covers the installation and setup process for the REC System, including agent configuration and Fabric network deployment.
 
 ## Prerequisites
 
+- Ubuntu version = 20.04
 - Node.js version = 20.10
 - Docker
 - Add docker to sudo group to use docker without using sudo
@@ -38,6 +58,7 @@ cd service/rec
 ```bash
 ./startNetwork.sh
 ```
+
 4. A Redis server must be running either on Docker or localhost using the default port. To start a Redis server using Docker:
 ```bash
 docker run --name redis-server -p 6379:6379 -d redis
@@ -73,7 +94,7 @@ Replace `<email>` with the actual email of the organization or client, and `<por
 
 
 
-### 4. Organization Interface Setup
+### 3. Organization Interface Setup
 Configure and start the Organization Interface as follows:
 
 1. Add the following variables to your `.env` file:
@@ -92,7 +113,7 @@ Organization Interface server will run on port 3000
 ### Key notes
 - Please open the client and organization interface in a separate window (not a separate tab, same window) or browser for each client and organization at the same time. This may cause a conflict with the local storage data of separate clients or organizations in the browser.
 
-### Client Interface Setup
+### 4. Client Interface Setup
 Configure and start the Client API as follows:
 1. Add the following variables to your `.env` file:
 ```
@@ -107,7 +128,7 @@ npm run dev
 ```
 Client Interface server will run on port 3001
 
-### CSV data generation
+### 5. CSV data generation
 1. Navigate to data directory and install dependencies
 ```
 cd data
@@ -121,7 +142,7 @@ npm run dataGenerate
 4. To understand to process of data generation, view data-gen.js file.
 
 
-### Realtime api to send data
+### 6. Realtime api to send data
 1. Navigate to data directory and install dependencies
 ```
 cd data
@@ -132,8 +153,18 @@ npm install
 cp .env.sample .env
 npm run repeatedApiCall
 ```
-3. To understand to process of realtime api call, view repeatedApiCaller.js file.
+3. `.env.sample` conatins all the variables needed to run the realtime api call. Please carefully set the variables in .env file.
+4. To understand to process of realtime api call, view repeatedApiCaller.js file.
 
+### Troubleshooting on starting fabric network
+
+If there is an issue with "Peer binary and configuration files not found..", please follow this instructions otherwise leave it.
+   
+1. Clone the fabric sample with fabric version 2.5.2 and fabric-ca-version 1.5.6 in a separate directory.
+```
+curl -sSL https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash -s -- 2.5.2 1.5.6
+```
+2. Copy the bin file from fabric-samples directory and replace rec_dlt/service/bin with it.
 
 
 ## Architecture 

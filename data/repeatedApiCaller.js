@@ -32,6 +32,5 @@ const intervalInSeconds = 20;
 console.log(`${process.env.CLIENT_API_ENDPOINT}/send-message`)
 const intervalId = callApiRepeatedly(`${process.env.CLIENT_API_ENDPOINT}/send-message`, intervalInSeconds);
 
-// Uncomment the following line to stop the interval after a certain time (e.g., after 5 minutes)
 const exipiryMinute = 20
 setTimeout(() => clearInterval(intervalId), exipiryMinute * 60 * 1000);
