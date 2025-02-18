@@ -23,7 +23,7 @@ This guide covers the installation and setup process for the REC System, includi
 
 ## Prerequisites
 
-- Ubuntu version = 20.04
+- Ubuntu version = 22.04
 - Node.js version = 20.10
 - Docker
 - Add docker to sudo group to use docker without using sudo
