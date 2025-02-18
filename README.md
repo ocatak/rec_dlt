@@ -159,7 +159,8 @@ npm run repeatedApiCall
 ### Troubleshooting on starting fabric network
 
 If there is an issue with "Peer binary and configuration files not found..", please follow this instructions otherwise leave it.
-   
+
+1. Stop all running docker containers and clear docker images and containers by running `docker system prune -a`.
 1. Clone the fabric sample with fabric version 2.5.2 and fabric-ca-version 1.5.6 in a separate directory.
 ```
 curl -sSL https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash -s -- 2.5.2 1.5.6
